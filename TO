@@ -1,0 +1,7 @@
+TODO:
+
+1. decide which proteins to use
+2. decide metric for distances between pdb structure/sequences
+       (the alignment of interaction network? or blossum62?)
+3. write program to fetch pdb from pdb database, guided by SCOPe
+
