@@ -30,29 +30,30 @@ def getAllProtiens(filename, pdbs):
     with open(filename,"r") as fp:
         while True:
             title = fp.readline()
-            pdb_id = title[1:5]+title[6:5]
-            print title
+            pdb_id = title[1:5]+title[6:7]
             seq = fp.readline()
+            if pdb_id == "":
+                break
             if len(seq) < 50 or len(seq) > 500:
                 continue
-            if(title[13]!='p'):
+            if(title[12]!='p'):
                 continue
             cathid = ''
-            if pdbid in pdb_dict:
+            if pdb_id in pdb_dict:
                 cathid = pdbs[pdb_id]
-            if pdb_id.trim() == "":
-                break
+            #print "I made it!"
             yield pdb_id, cathid, seq
 
 
 def writeXML(filename,stream):
     with open(filename,"w") as fp:
         for pid, cid, seq in stream:
+            #print pid
             output = "<PROTEIN>\n"
             output += "<PDBID>"+str(pid)+"</PDBID>\n"
             output += "<CATHID>"+str(cid)+"</CATHID>\n"
             output += "<SEQUENCE>\n"+str(seq)+"\n</SEQUENCE>\n"
-            output ++ "</PROTEIN>\n"
+            output += "</PROTEIN>\n"
             fp.write(output)
 
 pdb_dict = get_pdb_dict()
