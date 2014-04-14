@@ -52,11 +52,11 @@ def writeXML(filename,stream):
             output = "<PROTEIN>\n"
             output += "<PDBID>"+str(pid)+"</PDBID>\n"
             output += "<CATHID>"+str(cid)+"</CATHID>\n"
-            output += "<SEQUENCE>\n"+str(seq)+"\n</SEQUENCE>\n"
+            output += "<SEQUENCE>\n"+str(seq)+"</SEQUENCE>\n"
             output += "</PROTEIN>\n"
             fp.write(output)
 
 pdb_dict = get_pdb_dict()
-writeXML("test_output.xml",getAllProtiens("pdb_seqres.txt",pdb_dict))
+writeXML("final_output.xml",getAllProtiens("pdb_seqres.txt",pdb_dict))
 
 
